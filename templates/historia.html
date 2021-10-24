@@ -3,7 +3,7 @@
 
 <head>  
 <meta charset="utf-8" />  
-<title>Moja strona</title>  
+<title>Accountant - historia</title>  
 <meta name="author" content="" />  
 <meta name="description" content="" />  
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,16 +16,16 @@
 <body>
 <div class="container">
 
-    <header class="navbar">
-        <section class="navbar-section">
-            <a href="#" class="navbar-brand mr-2">MAGAZYN</a>
-            <a href="#" class="btn btn-link">Strona główna</a>
-            <a href="#" class="btn btn-link">Historia</a>
-        </section>
+    <header>
     </header>
 
     <main>
-        <h1> Historia operacji od {{ context.start }} do {{ context.stop }}</h1>
+        <h1> Historia operacji od {{ context.a }} do {{ context.b }}</h1>
+        {% for action in range (context.a, context.b + 1) %}
+                {% for list_item in context.history[action] %}
+                {{list_item }}
+                {% endfor %}
+        {% endfor %}
     </main>
 
     <footer>

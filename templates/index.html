@@ -1,76 +1,86 @@
 <!DOCTYPE html>
 <html>
 
-<head>  
-<meta charset="utf-8" />  
-<title>Accountant</title>  
-<meta name="author" content="" />  
-<meta name="description" content="" />  
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
-<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
-<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+<head>
+    <meta charset="utf-8" />  
+    <title>Accountant</title>  
+    <meta name="author" content="" />  
+    <meta name="description" content="" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">   
 </head>
 
 <body>
 <div class="container">
-
-    <header>
+    <h1></h1>
+    <div class="bg-secondary">
+    <header class="navbar">
+        <section class="navbar-section">
+            <a href="/historia/" class="navbar-brand mr-3"><div class="text-bold">Historia</div></a>
+        </section>
+        <section class="navbar-center">
+            <h2><span class="text-primary"><div class="text-bold">Accountant</div></span></h2>
+        </section>
+        <section class="navbar-section">
+        </section>
     </header>
-
+    </div>
+    <h1></h1>
     <main>
-        <div class="container">
-            <div class="columns">
-              <div class="column col-4"></div>
-              <div class="column col-4"><h1>Accountant</h1></div>
-              <div class="column col-4"></div>
+        <div class="hero bg-dark">
+        <div class="hero-body">
+        <div class="columns">
+            <div class="column col-4">
+                <div class="container">
+                <form action="/zakup/" method="POST">
+                <h3><div class="text-bold"><div class="text-center">Zakup</div></div></h3>
+                <label class="form-label" for="input-example-1">Nazwa produktu</label>
+                <input class="form-input" type="text" id="input-example-1" placeholder="Nazwa produktu" name="product_buy">
+                <label class="form-label" for="input-example-2">Cena jednostkowa</label>
+                <input class="form-input" type="number" id="input-example-2" placeholder="Cena jednostkowa" name="price_buy">
+                <label class="form-label" for="input-example-3">Liczba sztuk</label>
+                <input class="form-input" type="number" id="input-example-3" placeholder="Liczba sztuk" name="product_quantity_buy">
+                <button class="btn btn-primary btn-sm" type="submit">Zaksieguj</button>
+                </form>
+                </div>
+            </div>
+            <div class="column col-4">
+                <div class="container">
+                <form action="/sprzedaz/" method="POST">
+                <h3><div class="text-bold"><div class="text-center">Sprzedaz</div></div></h3>
+                <label class="form-label" for="input-example-4">Nazwa produktu</label>
+                <input class="form-input" type="text" id="input-example-4" placeholder="Nazwa produktu" name="product">
+                <label class="form-label" for="input-example-5">Cena jednostkowa</label>
+                <input class="form-input" type="number" id="input-example-5" placeholder="Cena jednostkowa" name="price">
+                <label class="form-label" for="input-example-6">Liczba sztuk</label>
+                <input class="form-input" type="number" id="input-example-6" placeholder="Liczba sztuk" name="product_quantity">
+                <button class="btn btn-primary btn-sm" type="submit">Zaksieguj</button>
+                </form>
+                </div>
+            </div>
+            <div class="column col-4">
+                <div class="container">
+                <form action="/saldo/" method="POST">
+                <h3><div class="text-bold"><div class="text-center">Saldo</div></div></h3>
+                <label class="form-label" for="input-example-7">Komentarz</label>
+                <input class="form-input" type="text" id="input-example-7" placeholder="Komentarz" name="comment">
+                <label class="form-label" for="input-example-8">Wartosc</label>
+                <input class="form-input" type="number" id="input-example-8" placeholder="Wartosc" name="value">
+                <button class="btn btn-primary btn-sm" type="submit">Zaksieguj</button>
+                </form>
+                </div>
             </div>
         </div>
-        <hr>
-
-            <div class="columns">
-                <div class="column col-4">
-                    <form action="/zakup/" method="POST">
-                    <h2>Zakup</h2>
-                    <label class="form-label" for="input-example-1">Nazwa produktu</label>
-                    <input class="form-input" type="text" id="input-example-1" placeholder="Nazwa produktu" name="product_buy">
-                    <label class="form-label" for="input-example-2">Cena jednostkowa</label>
-                    <input class="form-input" type="number" id="input-example-2" placeholder="Cena jednostkowa" name="price_buy">
-                    <label class="form-label" for="input-example-3">Liczba sztuk</label>
-                    <input class="form-input" type="number" id="input-example-3" placeholder="Liczba sztuk" name="product_quantity_buy">
-                    <button type="submit">Zaksieguj</button>
-                    </form>
-                </div>
-                <div class="column col-4">
-                    <form action="/sprzedaz/" method="POST">
-                    <h2>Sprzedaz</h2>
-                    <label class="form-label" for="input-example-4">Nazwa produktu</label>
-                    <input class="form-input" type="text" id="input-example-4" placeholder="Nazwa produktu" name="product">
-                    <label class="form-label" for="input-example-5">Cena jednostkowa</label>
-                    <input class="form-input" type="number" id="input-example-5" placeholder="Cena jednostkowa" name="price">
-                    <label class="form-label" for="input-example-6">Liczba sztuk</label>
-                    <input class="form-input" type="number" id="input-example-6" placeholder="Liczba sztuk" name="product_quantity">
-                    <button type="submit">Zaksieguj</button>
-                    </form>
-                </div>
-                <div class="column col-4">
-                    <form action="/saldo/" method="POST">
-                    <h2>Saldo</h2>
-                    <label class="form-label" for="input-example-7">Komentarz</label>
-                    <input class="form-input" type="text" id="input-example-7" placeholder="Komentarz" name="comment">
-                    <label class="form-label" for="input-example-8">Wartosc</label>
-                    <input class="form-input" type="number" id="input-example-8" placeholder="Wartosc" name="value">
-                    <button type="submit">Zaksieguj</button>
-                    </form>
-                </div>
-            </div>
-        </form>
-            <hr>
+        </div>
+        </div>
+        <h1></h1>
+        <div class="bg-gray">
             <div class="container">
                 <div class="columns">
                     <div class="column col-6">
-                        <h2> Stan magazynowy</h2>  
+                        <h3><div class="text-bold"><div class="text-center">Stan magazynowy</div></div></h3>  
                         <table class="table">
                             <thead>
                               <tr>
@@ -89,12 +99,12 @@
                         </table>
                     </div>
                     <div class="column col-6">
-                        <h2> Saldo:
-                            {{context.account}}
-                        </h2>
+                        <h3><div class="text-bold"><div class="text-center">Saldo</div></div></h3>
+                        <h3><div class="text-bold"><div class="text-center">{{context.account}}</div></div></h3>
                     </div>
                 </div>
             </div>
+        </div>
     </main>
 
     <footer>
