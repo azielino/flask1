@@ -3,7 +3,7 @@
 
 <head>  
 <meta charset="utf-8" />  
-<title>Moja strona</title>  
+<title>Accountant</title>  
 <meta name="author" content="" />  
 <meta name="description" content="" />  
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,74 +16,90 @@
 <body>
 <div class="container">
 
-    <header class="navbar">
-        <section class="navbar-section">
-            <a href="#" class="navbar-brand mr-2">MAGAZYN</a>
-            <a href="#" class="btn btn-link">Strona główna</a>
-            <a href="#" class="btn btn-link">Historia</a>
-        </section>
+    <header>
     </header>
 
     <main>
-        <h1> Stan magazynowy: 
-            {{ costam }}
-            {% if context.name %}
-                {{ context.name }}
-            {% else %}
-            Nieznajomy
-            {% endif %}
-            {{ context.city }}
-            </h1>
-        <h2> Saldo: </h2>
-            <section class="container">
-            <form action="/" method="POST">
-                <div class="form-group">
+        <div class="container">
+            <div class="columns">
+              <div class="column col-4"></div>
+              <div class="column col-4"><h1>Accountant</h1></div>
+              <div class="column col-4"></div>
+            </div>
+        </div>
+        <hr>
+
+            <div class="columns">
+                <div class="column col-4">
+                    <form action="/zakup/" method="POST">
+                    <h2>Zakup</h2>
                     <label class="form-label" for="input-example-1">Nazwa produktu</label>
-                    <input class="form-input" type="text" id="input-example-1" placeholder="Nazwa produktu" name="name">
-                </div>
-                <div class="form-group">
+                    <input class="form-input" type="text" id="input-example-1" placeholder="Nazwa produktu" name="product_buy">
                     <label class="form-label" for="input-example-2">Cena jednostkowa</label>
-                    <input class="form-input" type="text" id="input-example-2" placeholder="Cena jednostkowa" name="city">
+                    <input class="form-input" type="number" id="input-example-2" placeholder="Cena jednostkowa" name="price_buy">
+                    <label class="form-label" for="input-example-3">Liczba sztuk</label>
+                    <input class="form-input" type="number" id="input-example-3" placeholder="Liczba sztuk" name="product_quantity_buy">
+                    <button type="submit">Zaksieguj</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label class="form-label" for="input-example-2">Liczba sztuk</label>
-                    <input class="form-input" type="text" id="input-example-2" placeholder="Liczba sztuk" name="city">
+                <div class="column col-4">
+                    <form action="/sprzedaz/" method="POST">
+                    <h2>Sprzedaz</h2>
+                    <label class="form-label" for="input-example-4">Nazwa produktu</label>
+                    <input class="form-input" type="text" id="input-example-4" placeholder="Nazwa produktu" name="product">
+                    <label class="form-label" for="input-example-5">Cena jednostkowa</label>
+                    <input class="form-input" type="number" id="input-example-5" placeholder="Cena jednostkowa" name="price">
+                    <label class="form-label" for="input-example-6">Liczba sztuk</label>
+                    <input class="form-input" type="number" id="input-example-6" placeholder="Liczba sztuk" name="product_quantity">
+                    <button type="submit">Zaksieguj</button>
+                    </form>
                 </div>
-                <input type="submit" />
-            </form>
-            </section>
-
-            <section class="container">
-            <form action="/" method="POST">
-                    <label class="form-label" for="input-example-1">Nazwa produktu</label>
-                    <input class="form-input" type="text" id="input-example-1" placeholder="Nazwa produktu" name="name">
-    
-                    <label class="form-label" for="input-example-2">Cena jednostkowa</label>
-                    <input class="form-input" type="text" id="input-example-2" placeholder="Cena jednostkowa" name="city">
-
-                    <label class="form-label" for="input-example-2">Liczba sztuk</label>
-                    <input class="form-input" type="text" id="input-example-2" placeholder="Liczba sztuk" name="city">
-    
-                    <input type="submit" />
-            </form>
-            </section>
-
-            <section class="container">
-            <form action="/" method="POST">
-                    <label class="form-label" for="input-example-1">Komentarz</label>
-                    <input class="form-input" type="text" id="input-example-1" placeholder="Komentarz" name="name">
-    
-                    <label class="form-label" for="input-example-2">Wartosc</label>
-                    <input class="form-input" type="number" id="input-example-2" placeholder="Wartosc" name="city">
-
-                    <input type="submit" />
-            </form>
-            </section>
+                <div class="column col-4">
+                    <form action="/saldo/" method="POST">
+                    <h2>Saldo</h2>
+                    <label class="form-label" for="input-example-7">Komentarz</label>
+                    <input class="form-input" type="text" id="input-example-7" placeholder="Komentarz" name="comment">
+                    <label class="form-label" for="input-example-8">Wartosc</label>
+                    <input class="form-input" type="number" id="input-example-8" placeholder="Wartosc" name="value">
+                    <button type="submit">Zaksieguj</button>
+                    </form>
+                </div>
+            </div>
+        </form>
+            <hr>
+            <div class="container">
+                <div class="columns">
+                    <div class="column col-6">
+                        <h2> Stan magazynowy</h2>  
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Nazwa produktu</th>
+                                <th>Ilosc</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in context.warehouse %}  
+                                <tr class="active">
+                                    <th>{{item}}</th>
+                                    <th>{{context.warehouse[item]}}</th>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column col-6">
+                        <h2> Saldo:
+                            {{context.account}}
+                        </h2>
+                    </div>
+                </div>
+            </div>
     </main>
 
     <footer>
     </footer>
-    
+
 </div>
 </body>
 
