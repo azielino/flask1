@@ -141,20 +141,20 @@ def saldo(value, comment):
 def get_history_data(line_from, line_to):
     if line_from <= line_to: 
         a = int(line_from)
-        b = int(line_to)     
+        b = int(line_to)
+        if not manager.history:
+            with open("historia.json", "r") as file:
+                readed = json.load(file)
+                for list in readed:
+                    manager.history.append(list)
         if len(manager.history) < b:
             return '''<h1>Podany zakres przekracza ilosc zapisanych operacji!</h1>
                     <a href="/" class="navbar-brand mr-3">Powrót</div></a>'''
         else:
-            history = []
-            with open("historia.json", "r") as file:
-                readed = json.load(file)
-                for list in readed:
-                    history.append(list)
             interval = {
                 "a" : a,
                 "b" : b,
-                "history" : history
+                "history" : manager.history
             }
             return render_template("historia.html", context=interval)
     return '''<h1>Zle podane wartosci przedzialu!</h1>
@@ -162,14 +162,14 @@ def get_history_data(line_from, line_to):
 
 @app.route("/historia/")
 def get_history_data_all():
-    history = []
-    with open("historia.json", "r") as file:
-        readed = json.load(file)
-        for list in readed:
-            history.append(list)
+    if not manager.history:
+        with open("historia.json", "r") as file:
+            readed = json.load(file)
+            for list in readed:
+                manager.history.append(list)
     interval = {
         "a" : 0,                                                                                                                                                              
-        "b" : len(history) - 1,
-        "history" : history
+        "b" : len(manager.history) - 1,
+        "history" : manager.history
     }
     return render_template("historia.html", context=interval)
