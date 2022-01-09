@@ -173,6 +173,3 @@ def get_history_data_all():
         "history" : manager.history
     }
     return render_template("historia.html", context=interval)
-
-if __name__ == "__main__":
-    app.run()
