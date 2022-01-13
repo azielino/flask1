@@ -223,6 +223,3 @@ def get_history_data_all():
         "history" : db.session.query(Action).all()
     }
     return render_template("historia.html", context=context)
-
-if __name__ == '__main__':
-    app.run()
