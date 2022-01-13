@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
     </head>
     <body>
-        <div class="container grid-xl mt-2">
+        <div class="container grid-xl bg-secondary mt-2">
             <header>
                 <div class="hero-sm bg-secondary">
                     <div class="hero-body">
@@ -20,7 +20,11 @@
                                 <a href="/" class="navbar-brand mr-3"><div class="text-bold"><i class="icon icon-back"></i> Powrót</div></a>
                             </section>
                             <section class="navbar-center">
+                                {% if context.a %}
                                 <h2><span class="text-primary text-bold">Historia operacji od {{ context.a }} do {{ context.b }}</span></h2>
+                                {% else %}
+                                <h2><span class="text-primary text-bold">Historia operacji</span></h2>
+                                {% endif %}
                             </section>
                             <section class="navbar-section">
                             </section>
@@ -39,26 +43,29 @@
                         <th>Nazwa produktu</th>
                         <th>Cena jednostkowa</th>
                         <th>Liczba sztuk</th>
+                        <th>Saldo</th>
                       </tr>
                     </thead>
                     <tbody>
-                        {% for i in range (context.a, context.b + 1) %}
+                        {% for item in context.history %}
                             <tr class="active">
-                                <td class="text-bold">{{ i }}</td>
-                                {% if context.history[i][0] == 'saldo' %}
-                                    <td>{{ context.history[i][0] }}</td>                                        
-                                    <td>{{ context.history[i][1] }}</td>
-                                    <td>{{ context.history[i][2] }}</td>
+                                <td class="text-bold">{{ item.id }}</td>
+                                {% if item.action == 'saldo' %}
+                                    <td>{{ item.action }}</td>                                        
+                                    <td>{{ item.value }} zł</td>
+                                    <td>{{ item.comment }}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td>{{ item.account }} zł</td>
                                 {% else %} 
-                                    <td>{{ context.history[i][0] }}</td>
+                                    <td>{{ item.action }}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>{{ context.history[i][1] }}</td>
-                                    <td>{{ context.history[i][2] }}</td>
-                                    <td>{{ context.history[i][3] }}</td>
+                                    <td>{{ item.product }}</td>
+                                    <td>{{ item.price }} zł</td>
+                                    <td>{{ item.product_quantity }}</td>
+                                    <td>{{ item.account }} zł</td>
                                 {% endif %}
                             </tr>
                         {% endfor %}

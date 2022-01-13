@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+        <meta charset="utf-8" />  
+        <title>Accountant - error</title>  
+        <meta name="author" content="" />  
+        <meta name="description" content="" />  
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    </head>
+    <body>
+        <div class="container grid-xl bg-secondary mt-2">
+            <header>
+                <div class="bg-error">
+                    <div class="hero-body">
+                        <header class="navbar">
+                            <section class="navbar-section">
+                                <a href="/" class="navbar-brand mr-3 text-light text-bold"><i class="icon icon-back"></i> Powrót</a>
+                            </section>
+                            <section class="navbar-center">
+                                <h2 class="text-center text-light text-bold">Błąd!</h2>
+                            </section>
+                            <section class="navbar-section">
+                            </section>
+                        </header>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <h2 class="text-error text-center">{{ context.error }}</h2>
+            </main>
+        </div>
+    </body>
+</html>
